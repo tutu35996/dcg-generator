@@ -310,14 +310,38 @@ class CertificateGenerator {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.drawImage(this.template, 0, 0, 1280, 800);
 
-    // 绘制头像
+    // 绘制头像（圆形裁切 + object-fit: cover 居中填充）
     if (this.avatar) {
+      const imgW = this.avatar.width;
+      const imgH = this.avatar.height;
+      const cropSide = Math.min(imgW, imgH);
+      const sx = (imgW - cropSide) / 2;
+      const sy = (imgH - cropSide) / 2;
+
       this.ctx.save();
+      this.ctx.imageSmoothingEnabled = true;
+      this.ctx.imageSmoothingQuality = 'high';
       this.ctx.beginPath();
-      this.ctx.arc(this.avatarX + this.avatarSize / 2, this.avatarY + this.avatarSize / 2, this.avatarSize / 2, 0, Math.PI * 2);
+      this.ctx.arc(
+        this.avatarX + this.avatarSize / 2,
+        this.avatarY + this.avatarSize / 2,
+        this.avatarSize / 2,
+        0,
+        Math.PI * 2
+      );
       this.ctx.closePath();
       this.ctx.clip();
-      this.ctx.drawImage(this.avatar, this.avatarX, this.avatarY, this.avatarSize, this.avatarSize);
+      this.ctx.drawImage(
+        this.avatar,
+        sx,
+        sy,
+        cropSide,
+        cropSide,
+        this.avatarX,
+        this.avatarY,
+        this.avatarSize,
+        this.avatarSize
+      );
       this.ctx.restore();
     }
 
