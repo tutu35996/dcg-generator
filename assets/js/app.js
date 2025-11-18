@@ -90,6 +90,13 @@ class CertificateGenerator {
         3: "templates/croatian/Croatian_VIP3.png",
         4: "templates/croatian/Croatian_VIP4.png",
         5: "templates/croatian/Croatian_VIP5.png"
+      },
+      slovak: {
+        1: "templates/slovak/Slovak_VIP1.png",
+        2: "templates/slovak/Slovak_VIP2.png",
+        3: "templates/slovak/Slovak_VIP3.png",
+        4: "templates/slovak/Slovak_VIP4.png",
+        5: "templates/slovak/Slovak_VIP5.png"
       }
     };
     
@@ -390,7 +397,8 @@ class CertificateGenerator {
       'bulgarian': '保加利亚语',
       'romanian': '罗马尼亚语',
       'portuguese': '葡萄牙语',
-      'croatian': '克罗地亚语'
+      'croatian': '克罗地亚语',
+      'slovak': '斯洛伐克语'
     };
     
     const countryName = countryNames[this.currentCountry] || this.currentCountry;
